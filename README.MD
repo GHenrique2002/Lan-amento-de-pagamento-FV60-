@@ -40,12 +40,8 @@ Este projeto oferece uma solução para automatizar essa tarefa. Utilizando um s
 
 ### A Planilha Modelo
 
-O script depende de uma planilha Excel com uma estrutura específica. As colunas devem seguir o padrão abaixo para que a leitura dos dados funcione corretamente.
+O script depende de uma planilha Excel com uma estrutura específica. As colunas devem seguir o padrão para que a leitura dos dados funcione corretamente.
 
-| Fornecedor | DataDocumento | DataLancamento | Moeda | ValorTotal | CentroCusto | TextoHeader |
-| :--------- | :------------ | :------------- | :---- | :--------- | :---------- | :---------- |
-| 900145     | 05.10.2025    | 05.10.2025     | BRL   | 1500.50    | 10101010    | PG SERVIÇO |
-| 800256     | 04.10.2025    | 05.10.2025     | BRL   | 890.00     | 10101010    | PG MATERIAL|
 
 **Importante**: Os nomes das colunas na sua planilha devem corresponder exatamente aos que o script espera.
 
