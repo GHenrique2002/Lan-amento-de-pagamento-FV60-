@@ -1,0 +1,17 @@
+2025-11-03 19:10:28,561 - INFO - Iniciando processo de lançamento SAP.
+2025-11-03 19:10:28,561 - INFO - Tentando conectar ao SAP...
+2025-11-03 19:10:37,124 - INFO - Conexão SAP estabelecida com sucesso.
+2025-11-03 19:10:37,124 - INFO - Aguardando importação da planilha modelo...
+2025-11-03 19:10:44,905 - INFO - Planilha importada: C:/Users/4010150/OneDrive - Light/Documents/Projeto Python (Novo2) (1)/Projeto Python/Projeto/Dados locais/Planilha_modelo.xlsx
+2025-11-03 19:10:44,924 - INFO - Planilha carregada com 4 linhas.
+2025-11-03 19:10:44,924 - INFO - Iniciando lançamentos...
+2025-11-03 19:10:44,924 - INFO - Iniciando lançamento para fornecedor: 42498675000152
+2025-11-03 19:10:57,979 - INFO - Lançamento concluído para fornecedor: 42498675000152
+2025-11-03 19:10:57,979 - INFO - Iniciando lançamento para fornecedor: 42498675000152
+2025-11-03 19:11:11,173 - INFO - Lançamento concluído para fornecedor: 42498675000152
+2025-11-03 19:11:11,173 - INFO - Iniciando lançamento para fornecedor: 42498675000152
+2025-11-03 19:11:16,101 - ERROR - Erro ao lançar para fornecedor: 42498675000152
+2025-11-03 19:11:16,101 - INFO - Iniciando lançamento para fornecedor: 42498675000152
+2025-11-03 19:11:29,305 - INFO - Lançamento concluído para fornecedor: 42498675000152
+2025-11-03 19:11:29,305 - INFO - Processo de lançamento finalizado.
+2025-11-03 19:11:29,335 - INFO - Planilha salva com sucesso!
