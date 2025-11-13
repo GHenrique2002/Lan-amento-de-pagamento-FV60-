@@ -8,7 +8,6 @@ from openpyxl.styles import numbers
 from Scripts.conectar_sap import conectar_sap
 from Scripts.importar_planilha import importar_planilha_modelo
 from Scripts.lancamento import criar_documento
-from Scripts.lancamento import formatar_cnpj
 
 hora_inicio = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 pasta_atual = os.path.dirname(os.path.abspath(__file__)) # Caminho da pasta atual onde está o script
@@ -65,23 +64,22 @@ def main():
     logging.info("Iniciando lançamentos...")
     for index, row in df.iterrows(): # Para percorrer cada linha uma por uma de cima para baixo
         try:
-            logging.info(f"Iniciando lançamento para fornecedor: {row['CNPJ']}")
+            logging.info(f"Iniciando lançamento para fornecedor: {row['Fornecedor']}")
             print("-" * 30)
-            print(f"Lançando pagamento para Fornecedor: {row['CNPJ']}")
+            print(f"Lançando pagamento para Fornecedor: {row['Fornecedor']}")
             data_fatura = pd.to_datetime(row['Data fatura'], errors='coerce') #garantir que a data está preenchida com ponto
             data_pagamento = pd.to_datetime(row['Data pgto.'], errors='coerce') #garantir que a data está preenchida com ponto
  
             session.findById("wnd[0]").maximize()
-            formatar_cnpj(row['CNPJ'])
             docnum = criar_documento(row, session)        
             docnums.append(docnum)
             print(docnum)
             print(docnums)
 
             if docnum == "Erro ao processar lançamento. Verifique e tente novamente.":
-                logging.error(f"Erro ao lançar para fornecedor: {row['CNPJ']}")
+                logging.error(f"Erro ao lançar para fornecedor: {row['Fornecedor']}")
             else:
-                logging.info(f"Lançamento concluído para fornecedor: {row['CNPJ']}")
+                logging.info(f"Lançamento concluído para fornecedor: {row['Fornecedor']}")
 
         except Exception as e:
            print(f"Erro sistêmico. Reinicie o processo!")
@@ -90,9 +88,10 @@ def main():
     print("-" * 30)
     print("Processo de lançamento em massa finalizado!")
     logging.info("Processo de lançamento finalizado.")
-    df.insert(15, "Docnum", docnums)
+    while len(docnums) < len(df):
+        docnums.append("Erro ou não processado")
+    df["Docnum"] = docnums
     df.to_excel(caminho_planilha, index=False)
     logging.info("Planilha salva com sucesso!")
     messagebox.showinfo("Sucesso","Processo de lançamento finalizado.")
- 
 main()
