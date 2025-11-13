@@ -53,14 +53,15 @@ def criar_documento(row, session):
 
         session.findById("wnd[0]/usr/tabsTS/tabpMAIN/ssubPAGE:SAPLFDCB:0010/txtINVFO-XBLNR").text = str(row['Referência'])
 
-        valor = str(row['Montante']).replace("R$", "").replace(".", "").replace(",", ".").strip()
-        session.findById("wnd[0]/usr/tabsTS/tabpMAIN/ssubPAGE:SAPLFDCB:0010/txtINVFO-WRBTR").text = valor
+        valor = str(row['Montante']).replace("R$", "").strip()
+        valor_corrigido = float(valor)
+        session.findById("wnd[0]/usr/tabsTS/tabpMAIN/ssubPAGE:SAPLFDCB:0010/txtINVFO-WRBTR").text = valor_corrigido
 
         session.findById("wnd[0]/usr/tabsTS/tabpMAIN/ssubPAGE:SAPLFDCB:0010/ctxtINVFO-SGTXT").text = str(row['Texto descritivo'])
 
         # Aba Itens
         session.findById("wnd[0]/usr/subITEMS:SAPLFSKB:0100/tblSAPLFSKBTABLE/ctxtACGL_ITEM-HKONT[1,0]").text = str(row['Conta razão'])
-        session.findById("wnd[0]/usr/subITEMS:SAPLFSKB:0100/tblSAPLFSKBTABLE/txtACGL_ITEM-WRBTR[4,0]").text = valor
+        session.findById("wnd[0]/usr/subITEMS:SAPLFSKB:0100/tblSAPLFSKBTABLE/txtACGL_ITEM-WRBTR[4,0]").text = valor_corrigido
         time.sleep(1)
 
         try:
